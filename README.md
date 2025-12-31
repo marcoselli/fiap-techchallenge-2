@@ -58,15 +58,15 @@ Pré-requisitos:
 
 Rode:
 
+```
 ./gradlew bootRun
+```
 
-Banco de dados
+### Banco de dados
+- **H2 em memória**
+- **Dados de exemplo podem ser carregados apenas no profile dev**
 
-H2 em memória
-
-Dados de exemplo podem ser carregados apenas no profile dev
-
-Acesso
+### Acesso
 
 API: http://localhost:8080
 
@@ -94,7 +94,7 @@ O schema do banco é criado via Flyway
 Não existem inserts automáticos em produção
 O banco persiste via volume Docker
 
-Acesso
+### Acesso
 
 API: http://localhost:8080
 
