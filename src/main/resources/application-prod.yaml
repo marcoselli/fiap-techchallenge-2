@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    url: ${DB_URL} jdbc:mysql://mysql:3306/tech_challenge?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+
+  flyway:
+    locations: classpath:db/migration/schema
+    clean-disabled: true
+    baseline-on-migrate: false
+
+  sql:
+    init:
+      mode: never
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      probes:
+        enabled: true
