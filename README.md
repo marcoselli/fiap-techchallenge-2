@@ -136,7 +136,7 @@ Aguarda os pods ficarem prontos
 
 Acessando a aplicação no Kubernetes
 ```
-minikube service tech-challenge-service -n tech-challenge
+kubectl port-forward svc/tech-challenge-service 8080:80
 ```
 
 O navegador será aberto automaticamente.
