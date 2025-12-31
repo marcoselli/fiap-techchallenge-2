@@ -48,6 +48,7 @@ A aplicação expõe endpoints REST para gestão de veículos, utilizando **JPA/
 ├── Dockerfile
 ├── deploy.sh
 └── README.md
+```
 
 ## ▶️ Rodando o projeto em DEV local (sem Docker)
 Pré-requisitos:
@@ -78,7 +79,9 @@ Pré-requisitos:
 
 Subindo a aplicação:
 
+```
 docker-compose up --build
+```
 
 Isso irá subir:
 
@@ -120,16 +123,20 @@ O que o script faz:
 
 Cria:
 
+```text
 Namespace
 MySQL
 ConfigMaps e Secrets
 Deployment da aplicação
 Service
 HPA
+```
 
 Aguarda os pods ficarem prontos
 
 Acessando a aplicação no Kubernetes
+```
 minikube service tech-challenge-service -n tech-challenge
+```
 
 O navegador será aberto automaticamente.
