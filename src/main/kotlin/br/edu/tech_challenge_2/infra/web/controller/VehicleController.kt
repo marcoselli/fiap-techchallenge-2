@@ -2,6 +2,7 @@ package br.edu.tech_challenge_2.infra.web.controller
 
 import br.edu.tech_challenge_2.application.usecase.CreateVehicleUseCase
 import br.edu.tech_challenge_2.application.usecase.ListAvailableVehiclesUseCase
+import br.edu.tech_challenge_2.application.usecase.ListSoldVehiclesUseCase
 import br.edu.tech_challenge_2.application.usecase.SellVehicleUseCase
 import br.edu.tech_challenge_2.application.usecase.UpdateVehicleUseCase
 import br.edu.tech_challenge_2.domain.entity.Payment
@@ -33,7 +34,8 @@ import org.springframework.web.bind.annotation.RestController
     private val createVehicleUseCase: CreateVehicleUseCase,
     private val updateVehicleUseCase: UpdateVehicleUseCase,
     private val sellVehicleUseCase: SellVehicleUseCase,
-    private val listAvailableVehiclesUseCase: ListAvailableVehiclesUseCase
+    private val listAvailableVehiclesUseCase: ListAvailableVehiclesUseCase,
+    private val listSoldVehiclesUseCase: ListSoldVehiclesUseCase
 ) {
 
     @Operation(
@@ -105,4 +107,17 @@ import org.springframework.web.bind.annotation.RestController
     @GetMapping("/available")
     fun listAvailable() =
         listAvailableVehiclesUseCase.execute()
+
+    @Operation(
+        summary = "List sold vehicles",
+        description = "Returns all vehicles sold"
+    )
+    @ApiResponses(
+        value = [
+            ApiResponse(responseCode = "200", description = "List of available vehicles returned successfully")
+        ]
+    )
+    @GetMapping("/sold")
+    fun listSold() =
+        listSoldVehiclesUseCase.execute()
 }
