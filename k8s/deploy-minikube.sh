@@ -30,7 +30,6 @@ echo "📄 Aplicando manifestos Kubernetes..."
 
 kubectl apply -f k8s/mysql.yaml
 kubectl rollout status deployment/mysql
-kubectl apply -f k8s/namespace.yaml
 kubectl apply -f k8s/configmap.yaml
 kubectl apply -f k8s/secret.yaml
 kubectl apply -f k8s/deployment.yaml
@@ -41,7 +40,7 @@ kubectl apply -f k8s/hpa.yaml
 # 5. Aguardar pods
 # ----------------------------
 echo "⏳ Aguardando pods ficarem prontos..."
-kubectl wait --namespace tech-challenge \
+kubectl wait \
   --for=condition=ready pod \
   --selector=app=tech-challenge \
   --timeout=180s
@@ -53,8 +52,8 @@ echo "✅ Deploy finalizado com sucesso!"
 
 echo ""
 echo "🔎 Recursos criados:"
-kubectl get all -n tech-challenge
+kubectl get all
 
 echo ""
 echo "🌐 Para acessar a aplicação:"
-echo "minikube service tech-challenge-service -n tech-challenge"
+echo "kubectl port-forward svc/tech-challenge-service 8080:80"
